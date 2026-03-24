@@ -1,0 +1,151 @@
+/* ================================================================
+   WYSIWYG Editor – Styles
+   ================================================================ */
+
+.wysiwyg-editor {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
+    Cantarell, "Helvetica Neue", sans-serif;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---- Toolbar ---- */
+
+.wysiwyg-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  padding: 6px 8px;
+  background: #f5f5f5;
+  border-bottom: 1px solid #ddd;
+  align-items: center;
+}
+
+.wysiwyg-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 30px;
+  height: 30px;
+  padding: 0 6px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  transition:
+    background 0.15s,
+    border-color 0.15s;
+}
+
+.wysiwyg-btn:hover {
+  background: #e0e0e0;
+  border-color: #bbb;
+}
+
+.wysiwyg-btn.active {
+  background: #d0d0ff;
+  border-color: #99f;
+}
+
+.wysiwyg-select {
+  height: 30px;
+  padding: 0 4px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.wysiwyg-separator {
+  display: inline-block;
+  width: 1px;
+  height: 24px;
+  margin: 0 4px;
+  background: #ccc;
+}
+
+.wysiwyg-color-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.wysiwyg-color-input {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.wysiwyg-color-input::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+.wysiwyg-color-input::-webkit-color-swatch {
+  border: none;
+  border-radius: 0;
+}
+
+/* ---- Content area ---- */
+
+.wysiwyg-content {
+  flex: 1;
+  padding: 16px;
+  outline: none;
+  overflow-y: auto;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #222;
+}
+
+.wysiwyg-content:empty::before {
+  content: attr(data-placeholder);
+  color: #aaa;
+  pointer-events: none;
+}
+
+.wysiwyg-content blockquote {
+  margin: 8px 0;
+  padding: 8px 16px;
+  border-left: 4px solid #ccc;
+  background: #f9f9f9;
+  color: #555;
+}
+
+.wysiwyg-content pre {
+  margin: 8px 0;
+  padding: 12px;
+  background: #272822;
+  color: #f8f8f2;
+  border-radius: 4px;
+  font-family: "Courier New", Courier, monospace;
+  overflow-x: auto;
+}
+
+.wysiwyg-content img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ---- Status bar ---- */
+
+.wysiwyg-status {
+  padding: 4px 10px;
+  font-size: 12px;
+  color: #888;
+  background: #fafafa;
+  border-top: 1px solid #eee;
+}

@@ -1,0 +1,26 @@
+{
+  "name": "wysiwyg-editor",
+  "version": "1.0.0",
+  "main": "dist/wysiwyg-editor.js",
+  "module": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "start": "npx serve demo"
+  },
+  "keywords": [
+    "wysiwyg",
+    "rich-text",
+    "editor",
+    "contenteditable"
+  ],
+  "author": "",
+  "license": "ISC",
+  "description": "A configurable rich text editor component with a customizable toolbar",
+  "devDependencies": {
+    "rollup": "^4.0.0",
+    "rollup-plugin-postcss": "^4.0.2",
+    "@rollup/plugin-terser": "^0.4.0"
+  }
+}
