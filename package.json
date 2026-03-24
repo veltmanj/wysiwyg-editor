@@ -16,7 +16,7 @@
     "contenteditable"
   ],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "description": "A configurable rich text editor component with a customizable toolbar",
   "devDependencies": {
     "rollup": "^4.0.0",

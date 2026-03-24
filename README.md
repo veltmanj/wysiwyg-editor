@@ -91,13 +91,13 @@ const editor = new WYSIWYGEditor("#editor", {
 
 ### Options
 
-| Option           | Type       | Default     | Description                                                          |
-| ---------------- | ---------- | ----------- | -------------------------------------------------------------------- |
-| `toolbar`        | `string[]` | all actions | Toolbar items to display (action names or `'\|'` for separator)      |
-| `placeholder`    | `string`   | `''`        | Placeholder text shown when the editor is empty                      |
-| `initialContent` | `string`   | `''`        | Initial HTML content                                                 |
-| `minHeight`      | `number`   | `200`       | Minimum editor height in pixels                                      |
-| `onChange`        | `function` | `null`      | Callback invoked with the HTML string on every change                |
+| Option           | Type       | Default     | Description                                                     |
+| ---------------- | ---------- | ----------- | --------------------------------------------------------------- |
+| `toolbar`        | `string[]` | all actions | Toolbar items to display (action names or `'\|'` for separator) |
+| `placeholder`    | `string`   | `''`        | Placeholder text shown when the editor is empty                 |
+| `initialContent` | `string`   | `''`        | Initial HTML content                                            |
+| `minHeight`      | `number`   | `200`       | Minimum editor height in pixels                                 |
+| `onChange`       | `function` | `null`      | Callback invoked with the HTML string on every change           |
 
 ### Toolbar Actions
 
@@ -266,4 +266,4 @@ npm run dev
 
 ## License
 
-ISC
+[MIT](LICENSE)
