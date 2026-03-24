@@ -1,0 +1,27 @@
+<div class="demo-container">
+  <h1>WYSIWYG Editor - Angular Demo</h1>
+  <p class="subtitle">A rich text editor with a fully configurable toolbar.</p>
+
+  <app-wysiwyg-editor
+    placeholder="Start typing your document..."
+    [minHeight]="250"
+    (contentChange)="onContentChange($event)"
+    (editorReady)="onEditorReady($event)"
+  ></app-wysiwyg-editor>
+
+  <h3 class="section-title">Minimal toolbar</h3>
+  <app-wysiwyg-editor
+    [toolbar]="minimalToolbar"
+    placeholder="Simple mode..."
+    [minHeight]="120"
+  ></app-wysiwyg-editor>
+
+  <h3 class="section-title">HTML Output</h3>
+  <pre class="html-output">{{ html || "(start typing...)" }}</pre>
+
+  <div class="api-buttons">
+    <button (click)="setContent()">Set content</button>
+    <button (click)="clearEditor()">Clear</button>
+    <button (click)="showText()">Get text</button>
+  </div>
+</div>
