@@ -91,13 +91,13 @@ const editor = new WYSIWYGEditor("#editor", {
 
 ### Options
 
-| Option           | Type       | Default     | Description                                           |
-| ---------------- | ---------- | ----------- | ----------------------------------------------------- | ----------------- |
-| `toolbar`        | `string[]` | all actions | Toolbar items to display (action names or `'          | '` for separator) |
-| `placeholder`    | `string`   | `''`        | Placeholder text shown when the editor is empty       |
-| `initialContent` | `string`   | `''`        | Initial HTML content                                  |
-| `minHeight`      | `number`   | `200`       | Minimum editor height in pixels                       |
-| `onChange`       | `function` | `null`      | Callback invoked with the HTML string on every change |
+| Option           | Type       | Default     | Description                                                          |
+| ---------------- | ---------- | ----------- | -------------------------------------------------------------------- |
+| `toolbar`        | `string[]` | all actions | Toolbar items to display (action names or `'\|'` for separator)      |
+| `placeholder`    | `string`   | `''`        | Placeholder text shown when the editor is empty                      |
+| `initialContent` | `string`   | `''`        | Initial HTML content                                                 |
+| `minHeight`      | `number`   | `200`       | Minimum editor height in pixels                                      |
+| `onChange`        | `function` | `null`      | Callback invoked with the HTML string on every change                |
 
 ### Toolbar Actions
 
@@ -263,10 +263,6 @@ To rebuild on file changes:
 ```bash
 npm run dev
 ```
-
-## Publishing to npm
-
-See [PUBLISH.md](PUBLISH.md) for the full publishing guide — versioning, pre-publish checklist, scoped packages, tags, and automated releases via GitHub Actions.
 
 ## License
 
