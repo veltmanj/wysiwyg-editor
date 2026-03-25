@@ -1,4 +1,5 @@
 import { Toolbar } from './toolbar.js';
+import { executeCommand, getCommandState, getCommandValue, UndoManager } from './commands.js';
 
 /**
  * Rich text editor with a configurable toolbar.
@@ -84,6 +85,9 @@ export class WYSIWYGEditor {
 
     this.wrapper.appendChild(this.contentArea);
 
+    // Undo/redo history
+    this.undoManager = new UndoManager(this.contentArea);
+
     // Status bar
     this.statusBar = document.createElement('div');
     this.statusBar.classList.add('wysiwyg-status');
@@ -99,16 +103,22 @@ export class WYSIWYGEditor {
   /* ------------------------------------------------------------------ */
 
   _onInput() {
-    this._updateWordCount();
-    if (typeof this.options.onChange === 'function') {
-      this.options.onChange(this.getHTML());
-    }
+    this.undoManager.save();
+    this._afterChange();
   }
 
   _onKeyDown(e) {
     if (e.key === 'Tab') {
       e.preventDefault();
       this.exec(e.shiftKey ? 'outdent' : 'indent');
+    }
+  }
+
+  _afterChange() {
+    this.toolbar.updateActiveStates();
+    this._updateWordCount();
+    if (typeof this.options.onChange === 'function') {
+      this.options.onChange(this.getHTML());
     }
   }
 
@@ -123,22 +133,35 @@ export class WYSIWYGEditor {
   /*  Public API                                                         */
   /* ------------------------------------------------------------------ */
 
-  /** Execute a document command via execCommand. */
+  /** Execute a formatting command. */
   exec(command, value = null) {
     this.contentArea.focus();
-    document.execCommand(command, false, value);
-    this.toolbar.updateActiveStates();
-    this._onInput();
+
+    if (command === 'undo') {
+      this.undoManager.undo();
+      this._afterChange();
+      return;
+    }
+    if (command === 'redo') {
+      this.undoManager.redo();
+      this._afterChange();
+      return;
+    }
+
+    this.undoManager.save(true);
+    executeCommand(command, value, this.contentArea);
+    this.undoManager.save(true);
+    this._afterChange();
   }
 
   /** Query whether a command is currently active (e.g. bold). */
   queryCommandState(command) {
-    return document.queryCommandState(command);
+    return getCommandState(command, this.contentArea);
   }
 
   /** Query the current value of a command (e.g. fontName). */
   queryCommandValue(command) {
-    return document.queryCommandValue(command);
+    return getCommandValue(command, this.contentArea);
   }
 
   /** Get the editor's HTML content. */
