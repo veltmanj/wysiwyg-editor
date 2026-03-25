@@ -1,5 +1,5 @@
 {
-  "name": "wysiwyg-editor",
+  "name": "@veltmanj/wysiwyg-editor",
   "version": "1.0.0",
   "main": "dist/wysiwyg-editor.js",
   "module": "src/index.js",
@@ -7,7 +7,9 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
-    "start": "npx serve demo"
+    "start": "npx serve demo",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "keywords": [
     "wysiwyg",
@@ -19,9 +21,11 @@
   "license": "MIT",
   "description": "A configurable rich text editor component with a customizable toolbar",
   "devDependencies": {
+    "@rollup/plugin-terser": "^0.4.0",
+    "jsdom": "^27.0.1",
     "rollup": "^4.0.0",
     "rollup-plugin-postcss": "^4.0.2",
-    "@rollup/plugin-terser": "^0.4.0"
+    "vitest": "^3.2.4"
   },
   "files": [
     "dist/",

@@ -1,5 +1,5 @@
-import { Toolbar } from './toolbar.js';
 import { executeCommand, getCommandState, getCommandValue, UndoManager } from './commands.js';
+import { Toolbar } from './toolbar.js';
 
 /**
  * Rich text editor with a configurable toolbar.
@@ -123,7 +123,7 @@ export class WYSIWYGEditor {
   }
 
   _updateWordCount() {
-    const text = this.contentArea.innerText.trim();
+    const text = (this.contentArea.innerText ?? this.contentArea.textContent ?? '').trim();
     const words = text ? text.split(/\s+/).length : 0;
     const chars = text.length;
     this.statusBar.textContent = `${words} word${words !== 1 ? 's' : ''} · ${chars} character${chars !== 1 ? 's' : ''}`;
@@ -177,7 +177,7 @@ export class WYSIWYGEditor {
 
   /** Get the editor's plain text content. */
   getText() {
-    return this.contentArea.innerText;
+    return this.contentArea.innerText ?? this.contentArea.textContent ?? '';
   }
 
   /** Clear the editor. */
