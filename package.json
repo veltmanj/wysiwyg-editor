@@ -22,5 +22,9 @@
     "rollup": "^4.0.0",
     "rollup-plugin-postcss": "^4.0.2",
     "@rollup/plugin-terser": "^0.4.0"
-  }
+  },
+  "files": [
+    "dist/",
+    "src/"
+  ]
 }
