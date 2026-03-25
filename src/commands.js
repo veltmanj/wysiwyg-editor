@@ -71,21 +71,21 @@ function unwrapElement(el) {
 /* ------------------------------------------------------------------ */
 
 const INLINE_TAGS = {
-  bold:          ['STRONG', 'B'],
-  italic:        ['EM', 'I'],
-  underline:     ['U'],
+  bold: ['STRONG', 'B'],
+  italic: ['EM', 'I'],
+  underline: ['U'],
   strikeThrough: ['S', 'STRIKE', 'DEL'],
-  subscript:     ['SUB'],
-  superscript:   ['SUP'],
+  subscript: ['SUB'],
+  superscript: ['SUP'],
 };
 
 const INLINE_CREATE_TAG = {
-  bold:          'strong',
-  italic:        'em',
-  underline:     'u',
+  bold: 'strong',
+  italic: 'em',
+  underline: 'u',
   strikeThrough: 's',
-  subscript:     'sub',
-  superscript:   'sup',
+  subscript: 'sub',
+  superscript: 'sup',
 };
 
 function isInlineCommand(command) {
@@ -342,17 +342,17 @@ function removeFormat(container) {
 /* ------------------------------------------------------------------ */
 
 const ALIGNMENT_COMMANDS = {
-  justifyLeft:   'left',
+  justifyLeft: 'left',
   justifyCenter: 'center',
-  justifyRight:  'right',
-  justifyFull:   'justify',
+  justifyRight: 'right',
+  justifyFull: 'justify',
 };
 
 export function getCommandState(command, container) {
   if (INLINE_TAGS[command]) {
     return !!closestTag(INLINE_TAGS[command], container);
   }
-  if (command === 'insertOrderedList')  return !!closestTag(['OL'], container);
+  if (command === 'insertOrderedList') return !!closestTag(['OL'], container);
   if (command === 'insertUnorderedList') return !!closestTag(['UL'], container);
 
   if (ALIGNMENT_COMMANDS[command]) {
@@ -374,13 +374,13 @@ export function getCommandValue(command, container) {
 
   const style = window.getComputedStyle(node);
   switch (command) {
-    case 'fontName':    return style.fontFamily.replace(/['"]/g, '').split(',')[0].trim();
-    case 'fontSize':    return style.fontSize;
-    case 'foreColor':   return style.color;
+    case 'fontName': return style.fontFamily.replace(/['"]/g, '').split(',')[0].trim();
+    case 'fontSize': return style.fontSize;
+    case 'foreColor': return style.color;
     case 'hiliteColor':
-    case 'backColor':   return style.backgroundColor;
+    case 'backColor': return style.backgroundColor;
     case 'formatBlock': { const b = closestBlock(container); return b ? b.tagName.toLowerCase() : ''; }
-    default:            return '';
+    default: return '';
   }
 }
 
@@ -449,23 +449,23 @@ export function executeCommand(command, value, container) {
   }
 
   switch (command) {
-    case 'formatBlock':         formatBlock(value || 'div', container); break;
-    case 'justifyLeft':         setAlignment('left', container); break;
-    case 'justifyCenter':       setAlignment('center', container); break;
-    case 'justifyRight':        setAlignment('right', container); break;
-    case 'justifyFull':         setAlignment('justify', container); break;
-    case 'insertOrderedList':   toggleList('OL', container); break;
+    case 'formatBlock': formatBlock(value || 'div', container); break;
+    case 'justifyLeft': setAlignment('left', container); break;
+    case 'justifyCenter': setAlignment('center', container); break;
+    case 'justifyRight': setAlignment('right', container); break;
+    case 'justifyFull': setAlignment('justify', container); break;
+    case 'insertOrderedList': toggleList('OL', container); break;
     case 'insertUnorderedList': toggleList('UL', container); break;
-    case 'indent':              indent(container); break;
-    case 'outdent':             outdent(container); break;
-    case 'fontName':            applyInlineStyle('fontFamily', value, container); break;
-    case 'fontSize':            applyInlineStyle('fontSize', FONT_SIZE_MAP[value] || value, container); break;
-    case 'foreColor':           applyInlineStyle('color', value, container); break;
-    case 'hiliteColor':         applyInlineStyle('backgroundColor', value, container); break;
-    case 'createLink':          insertLink(value, container); break;
-    case 'insertImage':         insertImage(value, container); break;
+    case 'indent': indent(container); break;
+    case 'outdent': outdent(container); break;
+    case 'fontName': applyInlineStyle('fontFamily', value, container); break;
+    case 'fontSize': applyInlineStyle('fontSize', FONT_SIZE_MAP[value] || value, container); break;
+    case 'foreColor': applyInlineStyle('color', value, container); break;
+    case 'hiliteColor': applyInlineStyle('backgroundColor', value, container); break;
+    case 'createLink': insertLink(value, container); break;
+    case 'insertImage': insertImage(value, container); break;
     case 'insertHorizontalRule': insertHR(container); break;
-    case 'removeFormat':        removeFormat(container); break;
+    case 'removeFormat': removeFormat(container); break;
     default:
       console.warn(`WYSIWYGEditor: unknown command "${command}"`);
   }
