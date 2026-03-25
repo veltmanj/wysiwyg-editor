@@ -1,6 +1,6 @@
 {
   "name": "@veltmanj/wysiwyg-editor",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "dist/wysiwyg-editor.js",
   "module": "src/index.js",
   "type": "module",
